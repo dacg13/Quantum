@@ -1,0 +1,147 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0;}
+  .pg{background:#07090f;padding:2rem;font-family:'Share Tech Mono',monospace;color:#b0c8e0;}
+  .sec{font-size:9px;letter-spacing:0.3em;color:#1e3a50;text-transform:uppercase;margin-bottom:1rem;padding-bottom:6px;border-bottom:1px solid #0d1a28;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:2rem;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:2rem;}
+  .card{padding:14px 16px;position:relative;overflow:hidden;}
+  .bad{background:#0e0a0c;border:1px solid #2a1020;}.bad::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:#cc3355;}
+  .good{background:#080e0c;border:1px solid #0d2a1a;}.good::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:#00cc88;}
+  .idea{background:#0a0c12;border:1px solid #0d1e38;}.idea::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:#4488ff;}
+  .tag{font-size:9px;letter-spacing:0.2em;margin-bottom:6px;}
+  .bad .tag{color:#3a1020;} .good .tag{color:#1a3a28;} .idea .tag{color:#1a2a4a;}
+  .ttl{font-size:13px;letter-spacing:0.08em;margin-bottom:6px;}
+  .bad .ttl{color:#dd4466;} .good .ttl{color:#00cc88;} .idea .ttl{color:#4488ff;}
+  .desc{font-size:11px;line-height:1.65;}
+  .bad .desc{color:#5a3040;} .good .desc{color:#2a6a50;} .idea .desc{color:#3a5a80;}
+  .demo-wrap{background:#050810;border:1px solid #0d1a30;padding:1.2rem;margin-bottom:2rem;}
+  .demo-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;}
+  .demo-label{font-size:9px;letter-spacing:0.18em;color:#1e3a58;min-width:80px;padding-top:4px;}
+  .chip-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{padding:5px 11px;font-size:10px;letter-spacing:0.12em;border:1px solid;}
+  .chip-r{border-color:#cc335540;color:#dd4466;background:#0e0810;}
+  .chip-o{border-color:#cc770040;color:#cc9933;background:#0e0c08;}
+  .chip-g{border-color:#00cc8840;color:#00cc88;background:#080e0c;}
+  .chip-b{border-color:#4488ff40;color:#6699ff;background:#080c14;}
+  .preview-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:2rem;}
+  .pv{background:#050810;border:1px solid #0d1a28;padding:14px;}
+  .pv-title{font-size:9px;letter-spacing:0.2em;color:#1e3a58;margin-bottom:10px;}
+  canvas{display:block;border-radius:2px;}
+</style>
+
+<div class="pg">
+
+<div class="sec">Issues found — current module</div>
+<div class="grid2">
+  <div class="card bad">
+    <div class="tag">VISUAL — WAVE STATE</div>
+    <div class="ttl">Interference pattern too blurry & bloom-heavy</div>
+    <div class="desc">The fringe bands bleed into each other. Real double-slit fringes have sharp bright/dark contrast. The over-blurred glow makes it look like a lens flare, not a physics simulation.</div>
+  </div>
+  <div class="card bad">
+    <div class="tag">VISUAL — OBSERVER STATE</div>
+    <div class="ttl">Decoherence result is too plain — just a smear</div>
+    <div class="desc">When observer is active, the pattern collapses to a featureless cyan blob. It should show two distinct Gaussian humps — the "classical two-slit shadow" — so the contrast with the interference state is dramatic.</div>
+  </div>
+  <div class="card bad">
+    <div class="tag">TRANSITION</div>
+    <div class="ttl">Wave-collapse transition is instant — no drama</div>
+    <div class="desc">Toggling the detector snaps the pattern immediately. The wave function collapse is one of the most dramatic moments in quantum physics — it needs a cinematic wipe/dissolve, not a hard cut.</div>
+  </div>
+  <div class="card bad">
+    <div class="tag">CONTROLS</div>
+    <div class="ttl">Sliders don't visibly affect the pattern</div>
+    <div class="desc">Wavelength and slit separation sliders exist, but moving them doesn't visibly change the fringe spacing in real time. The whole point of the controls is to show that λ/d determines fringe width.</div>
+  </div>
+  <div class="card bad">
+    <div class="tag">UX — OBSERVER PANEL</div>
+    <div class="ttl">"Place Detector" button is not prominent enough</div>
+    <div class="desc">The button blends into the dark card. This is the most important interaction — it should be the most visually dominant element on the right side, not just a small outlined button.</div>
+  </div>
+  <div class="card bad">
+    <div class="tag">MISSING FEATURE</div>
+    <div class="ttl">No intensity graph / cross-section plot</div>
+    <div class="desc">A horizontal intensity profile graph below the main canvas would let users see the exact fringe pattern as a waveform — a standard way physicists actually analyze this experiment.</div>
+  </div>
+</div>
+
+<div class="sec">Suggested improvements</div>
+<div class="grid3">
+  <div class="card good">
+    <div class="tag">FIX 01 — HIGH</div>
+    <div class="ttl">Sharper fringe bands with hard edges</div>
+    <div class="desc">Reduce the bloom radius. Each bright fringe should be a crisp band, dark fringes truly black. Contrast = impact.</div>
+  </div>
+  <div class="card good">
+    <div class="tag">FIX 02 — HIGH</div>
+    <div class="ttl">Two-hump decoherence pattern</div>
+    <div class="desc">Observer state should render two separate Gaussian peaks aligned with the two slits. Makes the quantum→classical contrast unmissable.</div>
+  </div>
+  <div class="card good">
+    <div class="tag">FIX 03 — HIGH</div>
+    <div class="ttl">Animated collapse transition</div>
+    <div class="desc">0.8s animation: interference fringes ripple and dissolve into the two humps, with a brief "static noise" frame at mid-transition.</div>
+  </div>
+  <div class="card good">
+    <div class="tag">FIX 04 — HIGH</div>
+    <div class="ttl">Live intensity profile graph</div>
+    <div class="desc">Add a thin horizontal canvas below the main view showing a real-time waveform cross-section. Updates live when sliders move.</div>
+  </div>
+  <div class="card good">
+    <div class="tag">FIX 05 — MED</div>
+    <div class="ttl">Wavelength → color mapping</div>
+    <div class="desc">When λ changes, map it to a visible light color (400nm=violet, 700nm=red). The fringe color should shift with wavelength — powerful physics lesson.</div>
+  </div>
+  <div class="card good">
+    <div class="tag">FIX 06 — MED</div>
+    <div class="ttl">Particle-by-particle build mode</div>
+    <div class="desc">Add a "Shoot particles one by one" toggle. Individual dots land randomly at first, then the fringe pattern emerges statistically — the most mind-blowing version of this experiment.</div>
+  </div>
+  <div class="card idea">
+    <div class="tag">IDEA 07 — LOW</div>
+    <div class="ttl">Fringe order labels (m=0, ±1, ±2)</div>
+    <div class="desc">Small labels on each bright fringe showing the order number. Helps connect the visual to the equation dsinθ = mλ.</div>
+  </div>
+  <div class="card idea">
+    <div class="tag">IDEA 08 — LOW</div>
+    <div class="ttl">Path length difference overlay</div>
+    <div class="desc">On hover over a fringe, show the path difference (Δ = nλ for bright, Δ = n+½λ for dark) as a tooltip. Makes the math tangible.</div>
+  </div>
+  <div class="card idea">
+    <div class="tag">IDEA 09 — LOW</div>
+    <div class="ttl">Sound cue on collapse</div>
+    <div class="desc">A soft "glitch" or decoherence tone when the detector is placed. Subtle audio reinforces the dramatic state change.</div>
+  </div>
+</div>
+
+<div class="sec">Priority summary</div>
+<div class="demo-wrap">
+  <div class="demo-row">
+    <div class="demo-label">DO FIRST</div>
+    <div class="chip-row">
+      <div class="chip chip-r">Sharper fringe bands</div>
+      <div class="chip chip-r">Two-hump decoherence</div>
+      <div class="chip chip-r">Live intensity graph</div>
+    </div>
+  </div>
+  <div class="demo-row">
+    <div class="demo-label">DO NEXT</div>
+    <div class="chip-row">
+      <div class="chip chip-o">Animated collapse</div>
+      <div class="chip chip-o">Wavelength → color</div>
+      <div class="chip chip-o">Particle-by-particle mode</div>
+    </div>
+  </div>
+  <div class="demo-row">
+    <div class="demo-label">POLISH</div>
+    <div class="chip-row">
+      <div class="chip chip-b">Fringe order labels</div>
+      <div class="chip chip-b">Path diff tooltips</div>
+      <div class="chip chip-b">Sound on collapse</div>
+    </div>
+  </div>
+</div>
+
+</div>
