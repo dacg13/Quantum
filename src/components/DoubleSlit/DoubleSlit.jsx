@@ -364,10 +364,13 @@ export default function DoubleSlit() {
     const step = () => {
       setCollapseProgress(prev => {
         const speed = 0.025
-        if (prev < target) return Math.min(prev + speed, target)
-        if (prev > target) return Math.max(prev - speed, target)
-        return prev
+        const next = target > prev
+          ? Math.min(prev + speed, target)
+          : Math.max(prev - speed, target)
+        if (next === target) return target  // Stop loop at target
+        return next
       })
+      // Schedule next frame only if not yet at target
       raf = requestAnimationFrame(step)
     }
     raf = requestAnimationFrame(step)

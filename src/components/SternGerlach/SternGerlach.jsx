@@ -52,37 +52,6 @@ function simulate(initialState, measureAxis, n) {
   return { up: upCount, down: n - upCount, total: n }
 }
 
-// ─── Beam Particle ────────────────────────────────────
-function BeamParticle({ delay, upward }) {
-  return (
-    <motion.div
-      initial={{ x: 0, y: 0, opacity: 0, scale: 0.5 }}
-      animate={{
-        x: [0, 80, 110, 150],
-        y: [0, 0, upward ? -15 : 15, upward ? -45 : 45],
-        opacity: [0, 1, 1, 0],
-        scale: [0.5, 1.2, 1, 0.5],
-      }}
-      transition={{
-        duration: 1.6,
-        delay,
-        times: [0, 0.45, 0.7, 1],
-        ease: ['linear', 'easeInOut', 'easeOut']
-      }}
-      style={{
-        position: 'absolute',
-        width: 6, height: 6,
-        borderRadius: '50%',
-        background: upward ? '#00d4ff' : '#7b5ea7',
-        boxShadow: `0 0 12px ${upward ? '#00d4ff' : '#7b5ea7'}, 0 0 24px ${upward ? '#00d4ff' : '#7b5ea7'}`,
-        top: '50%', left: '30%', // Wait, earlier it was 30%... actually original code was left: '30%'. Wait! If left is 30%, x=0 starts at 30%.
-        marginTop: -3,
-        zIndex: 10,
-      }}
-    />
-  )
-}
-
 // ─── Animated Canvas Apparatus ───────────────────────
 function SternGerlachApparatus({ running, results, measureAxis, onLiveUpdate }) {
   const canvasRef = useRef(null)
