@@ -1,5 +1,7 @@
 # ⚛️ Quantum Mechanics Interactive Lab
 
+Try it Out: https://quantumphy.netlify.app/
+
 A modern, interactive web application for visualizing and simulating key quantum mechanics concepts. Built with React, Three.js, Tailwind CSS, and Recharts.
 
 ---
